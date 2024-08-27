@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vende tu Celular</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slides img,
+        .slides video {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 0;
+            padding: 0;
+            display: block;
+            vertical-align: bottom;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .thumbnails img {
+            width: 60px;
+            height: 60px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .thumbnails img.active {
+            opacity: 1;
+            border: 2px solid #007bff;
+        }
+
+        .thumbnails .video-thumbnail {
+            position: relative;
+        }
+
+        .thumbnails .video-thumbnail::after {
+            content: '\25BA';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+            background-color: #ff99cc;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .price .discounted-price {
+            color: #28a745;
+            font-size: 24px;
+        }
+
+        .price .original-price {
+            text-decoration: line-through;
+            color: #dc3545;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+
+        .price .discount {
+            font-size: 18px;
+            color: #ffc107;
+            margin-left: 10px;
+        }
+
+        .shipping-info {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .buy-button {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .buy-button:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>¡Vende tu Celular!</h1>
+</header>
+
+<div class="container">
+    <div class="carousel">
+        <div class="slides">
+            <img src="imagen1.png" alt="Imagen 1">
+            <video src="video1.mp4" controls></video>
+            <img src="imagen3.png" alt="Imagen 3">
+            <img src="imagen4.png" alt="Imagen 4">
+            <img src="imagen5.png" alt="Imagen 5">
+        </div>
+        <button class="nav-btn prev" onclick="prevSlide()">&#10094;</button>
+        <button class="nav-btn next" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <div class="thumbnails">
+        <img src="imagen1.jpg" alt="Imagen 1" onclick="showSlide(0)" class="active">
+        <img src="video1.mp4" alt="Video 1" class="video-thumbnail" onclick="showSlide(1)">
+        <img src="imagen3.jpg" alt="Imagen 3" onclick="showSlide(2)">
+        <img src="imagen4.jpg" alt="Imagen 4" onclick="showSlide(3)">
+        <img src="imagen5.jpg" alt="Imagen 5" onclick="showSlide(4)">
+    </div>
+
+    <div class="price">
+        <span class="discounted-price">COP13,938.94</span>
+        <span class="original-price">COP56,624.18</span>
+        <span class="discount">-75% dto.</span>
+    </div>
+
+    <div class="shipping-info">
+        <span>Envío gratis</span>
+        <span>Entrega: SEP 06 - 14</span>
+    </div>
+
+    <div class="product-details">
+        <h2>Nombre del Celular</h2>
+        <p>Marca: [Marca del Celular]</p>
+        <p>Modelo: [Modelo del Celular]</p>
+        <p>Condición: [Nuevo/Usado]</p>
+    </div>
+</div>
+
+<a href="tu-enlace-de-compra.html" class="buy-button">Comprar Ahora</a>
+
+<footer>
+    <p>&copy; 2024 Vende tu Celular</p>
+</footer>
+
+<script>
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        const slides = document.querySelector('.slides');
+        const thumbnails = document.querySelectorAll('.thumbnails img, .thumbnails video');
+        const totalSlides = slides.children.length;
+        const videos = slides.querySelectorAll('video');
+
+        // Detener todos los videos antes de cambiar de slide
+        videos.forEach(video => {
+            video.pause();
+            video.currentTime = 0;
+        });
+
+        if (index >= totalSlides) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = totalSlides - 1;
+        } else {
+            currentSlide = index;
+        }
+
+        const offset = -currentSlide * 100;
+        slides.style.transform = `translateX(${offset}%)`;
+
+        // Actualizar el thumbnail activo
+        thumbnails.forEach((thumbnail, i) => {
+            thumbnail.classList.toggle('active', i === currentSlide);
+        });
+
+        // Si el slide actual es un video, reproducirlo automáticamente
+        const currentVideo = slides.children[currentSlide].tagName === 'VIDEO' ? slides.children[currentSlide] : null;
+        if (currentVideo) {
+            currentVideo.play();
+        }
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+</script>
+
+</body>
+</html>
