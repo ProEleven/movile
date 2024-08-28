@@ -9,13 +9,13 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #111; /* Cambiado a un fondo oscuro */
+            color: #fff;
             text-align: center;
         }
 
         header {
-            background-color: #007bff;
+            background-color: #000; /* Fondo negro */
             color: #fff;
             padding: 10px 0;
         }
@@ -25,7 +25,7 @@
         }
 
         .container {
-            
+            padding: 20px;
         }
 
         .carousel {
@@ -95,25 +95,11 @@
             border: 2px solid #007bff;
         }
 
-        .thumbnails .video-thumbnail {
-            position: relative;
-        }
-
-        .thumbnails .video-thumbnail::after {
-            content: '\25BA';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
         .price {
             font-size: 24px;
             font-weight: bold;
             color: #28a745;
-            background-color: #ff99cc;
+            background-color: #000; /* Fondo oscuro */
             padding: 10px;
             border-radius: 5px;
             display: inline-block;
@@ -140,7 +126,7 @@
         .shipping-info {
             margin-top: 10px;
             font-size: 16px;
-            color: #555;
+            color: #aaa; /* Texto gris claro */
             display: flex;
             justify-content: center;
             gap: 15px;
@@ -152,7 +138,7 @@
             left: 0;
             width: 100%;
             padding: 15px;
-            background-color: #28a745;
+            background-color: #ff0066; /* Cambiado a rosa brillante */
             color: #fff;
             text-decoration: none;
             font-size: 18px;
@@ -163,13 +149,13 @@
         }
 
         .buy-button:hover {
-            background-color: #218838;
+            background-color: #e6005c;
         }
 
         footer {
             margin-top: 20px;
             padding: 10px 0;
-            background-color: #007bff;
+            background-color: #000; /* Fondo negro */
             color: #fff;
         }
 
@@ -277,6 +263,5 @@
         showSlide(currentSlide - 1);
     }
 </script>
-
 </body>
 </html>
