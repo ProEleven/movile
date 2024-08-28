@@ -9,13 +9,13 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #111; /* Cambiado a un fondo oscuro */
+            background-color: #111;
             color: #fff;
             text-align: center;
         }
 
         header {
-            background-color: #000; /* Fondo negro */
+            background-color: #000;
             color: #fff;
             padding: 10px 0;
         }
@@ -95,14 +95,33 @@
             border: 2px solid #007bff;
         }
 
+        .product-details {
+            margin-top: 20px;
+        }
+
+        .product-details h2 {
+            font-size: 24px;
+        }
+
+        .fixed-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
         .price {
             font-size: 24px;
             font-weight: bold;
             color: #28a745;
-            background-color: #000; /* Fondo oscuro */
-            padding: 10px;
-            border-radius: 5px;
-            display: inline-block;
+            margin-bottom: 10px;
         }
 
         .price .discounted-price {
@@ -123,29 +142,15 @@
             margin-left: 10px;
         }
 
-        .shipping-info {
-            margin-top: 10px;
-            font-size: 16px;
-            color: #aaa; /* Texto gris claro */
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
         .buy-button {
-            position: fixed;
-            bottom: 0;
-            left: 0;
             width: 100%;
-            padding: 15px;
-            background-color: #ff0066; /* Cambiado a rosa brillante */
+            background-color: #ff0066;
             color: #fff;
             text-decoration: none;
             font-size: 18px;
+            padding: 15px;
             text-align: center;
-            border-radius: 0;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
+            border-radius: 5px;
         }
 
         .buy-button:hover {
@@ -155,7 +160,7 @@
         footer {
             margin-top: 20px;
             padding: 10px 0;
-            background-color: #000; /* Fondo negro */
+            background-color: #000;
             color: #fff;
         }
 
@@ -192,17 +197,6 @@
         <img src="imagen5.jpg" alt="Imagen 5" onclick="showSlide(4)">
     </div>
 
-    <div class="price">
-        <span class="discounted-price">COP13,938.94</span>
-        <span class="original-price">COP56,624.18</span>
-        <span class="discount">-75% dto.</span>
-    </div>
-
-    <div class="shipping-info">
-        <span>Envío gratis</span>
-        <span>Entrega: SEP 06 - 14</span>
-    </div>
-
     <div class="product-details">
         <h2>Nombre del Celular</h2>
         <p>Marca: [Marca del Celular]</p>
@@ -211,7 +205,14 @@
     </div>
 </div>
 
-<a href="tu-enlace-de-compra.html" class="buy-button">Comprar Ahora</a>
+<div class="fixed-bar">
+    <div class="price">
+        <span class="discounted-price">COP13,938.94</span>
+        <span class="original-price">COP56,624.18</span>
+        <span class="discount">-75% dto.</span>
+    </div>
+    <a href="tu-enlace-de-compra.html" class="buy-button">Comprar Ahora</a>
+</div>
 
 <footer>
     <p>&copy; 2024 Vende tu Celular</p>
@@ -226,7 +227,6 @@
         const totalSlides = slides.children.length;
         const videos = slides.querySelectorAll('video');
 
-        // Detener todos los videos antes de cambiar de slide
         videos.forEach(video => {
             video.pause();
             video.currentTime = 0;
@@ -243,12 +243,10 @@
         const offset = -currentSlide * 100;
         slides.style.transform = `translateX(${offset}%)`;
 
-        // Actualizar el thumbnail activo
         thumbnails.forEach((thumbnail, i) => {
             thumbnail.classList.toggle('active', i === currentSlide);
         });
 
-        // Si el slide actual es un video, reproducirlo automáticamente
         const currentVideo = slides.children[currentSlide].tagName === 'VIDEO' ? slides.children[currentSlide] : null;
         if (currentVideo) {
             currentVideo.play();
